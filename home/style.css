@@ -1,8 +1,10 @@
-#footer {
-    background-color:#fcf7ef;
+.jemadre {
+    height: 100em;
 }
 
 .homeimg {
     width: 100%;
     height: auto;
+    position: absolute;
+    top: 0;
 }
