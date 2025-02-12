@@ -1,10 +1,16 @@
+body {
+    margin: 0;
+    padding: 0;
+}
 .jemadre {
     height: 100em;
 }
 
 .homeimg {
     width: 100%;
-    height: auto;
+    height: 100vh;
     position: absolute;
     top: 0;
+    object-fit: cover;
 }
+
