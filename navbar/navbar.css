@@ -6,3 +6,8 @@ hr {
 nav {
     margin-bottom: 0;
 }
+
+nav {
+    z-index: 1;
+
+}
