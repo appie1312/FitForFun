@@ -1,0 +1,49 @@
+<?php
+
+    $servername = "localhost";  
+    $username = "root";         
+    $password = "";            
+    $dbname = "FitForFun";      
+    
+    
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    
+    
+    if ($conn->connect_error) {
+        die("Verbinding mislukt: " . $conn->connect_error);
+    }
+    
+   
+    $sql = "SELECT * FROM Les";
+    $result = $conn->query($sql);
+    
+    
+    if ($result->num_rows > 0) {
+        echo "<table border='1'>";
+        echo "<tr><th>Naam</th><th>Datum</th><th>Tijd</th><th>Min Aantal Personen</th><th>Max Aantal Personen</th><th>Beschikbaarheid</th><th>Is Actief</th><th>Opmerking</th><th>Datumaangemaakt</th><th>Datumgewijzigd</th></tr>";
+        
+      
+        while($row = $result->fetch_assoc()) {
+            echo "<tr>
+                    <td>" . $row["Naam"] . "</td>
+                    <td>" . $row["datum"] . "</td>
+                    <td>" . $row["tijd"] . "</td>
+                    <td>" . $row["MinAantalPersonen"] . "</td>
+                    <td>" . $row["MaxAantalPersonen"] . "</td>
+                    <td>" . $row["Beschikbaarheid"] . "</td>
+                    <td>" . ($row["Isactief"] ? 'Ja' : 'Nee') . "</td>
+                    <td>" . $row["Opmerking"] . "</td>
+                    <td>" . $row["Datumaangemaakt"] . "</td>
+                    <td>" . $row["Datumgewijzigd"] . "</td>
+                  </tr>";
+        }
+        
+      
+        echo "</table>";
+    } else {
+        echo "Geen resultaten gevonden.";
+    }
+    
+  
+    $conn->close();
+    ?>
