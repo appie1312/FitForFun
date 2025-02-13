@@ -2,9 +2,7 @@ body {
     margin: 0;
     padding: 0;
 }
-.jemadre {
-    height: 100em;
-}
+
 
 .homeimg {
     width: 100%;
@@ -12,5 +10,54 @@ body {
     position: absolute;
     top: 0;
     object-fit: cover;
+    z-index: -1;
 }
 
+.intro-tekst {
+    position: relative;
+    height: 100vh;
+}
+
+.margin-top-intro {
+    padding-top: 20vh
+}
+
+.red-button {
+    background-color: #ff4c4c;
+    color: #ffff;
+    border: 0;
+    padding: 1em;
+    border-radius: 2em;
+    transition: background-color 0.6s ease;
+    margin-top: 5em;
+}
+
+.red-button:hover {
+    background-color: #d33636;
+}
+
+.speach {
+    text-align: center;
+    margin-top: 30vh;
+    margin-bottom: 30vh;
+}
+
+.team-info {
+    margin-left: 3em;
+    margin-top: 5em;
+}
+
+.emilly-foto {
+    border-top-left-radius: 50%;
+}
+
+.emilly-container {
+    margin-bottom: 30em;
+}
+
+.secundaire-kleur {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(252, 247, 239, 1) 10%, rgba(252, 247, 239, 1) 90%, rgba(255, 255, 255, 1) 100%);
+    padding-top: 5em;
+    padding-bottom: 5em;
+}
