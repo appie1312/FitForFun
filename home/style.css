@@ -40,6 +40,9 @@ body {
     text-align: center;
     margin-top: 30vh;
     margin-bottom: 30vh;
+    font-family:;
+    font-weight: bold;
+    font-size: 2em;
 }
 
 .team-info {
@@ -60,4 +63,10 @@ body {
     background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(252, 247, 239, 1) 10%, rgba(252, 247, 239, 1) 90%, rgba(255, 255, 255, 1) 100%);
     padding-top: 5em;
     padding-bottom: 5em;
+}
+
+.background-foto {
+    z-index: -1;
+    position: absolute;
+    right: 0;
 }
