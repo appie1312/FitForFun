@@ -6,41 +6,49 @@ CREATE DATABASE `FitForFun`;
 
 USE `FitForFun`;
 
-CREATE TABLE Les
-(
-    id                       INT                NOT NULL       AUTO_INCREMENT      PRIMARY KEY,
-    Naam                     VARCHAR(50)         NOT NULL,
-    datum                    DATE                NOT NULL,
-    tijd                     TIME                NOT NULL,
-    MinAantalPersonen        TINYINT            NOT NULL,
-    MaxAantalPersonen        TINYINT            NOT NULL,
-    Beschikbaarheid          VARCHAR(50)        NOT NULL,      
-    Isactief                 BIT                NOT NULL,
-    Opmerking                VARCHAR(250)       NULL,
-    Datumaangemaakt          DATETIME(6)        NOT NULL,
-    Datumgewijzigd           DATETIME(6)        NOT NULL,
-    CHECK (MinAantalPersonen >= 3),
-    CHECK (MaxAantalPersonen <= 9)
+DROP TABLE reservations;
+
+CREATE TABLE IF NOT EXISTS reservations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date DATE NOT NULL,
+    time TIME NOT NULL,
+	lesson_id       INT,
+    reservation_date DATE NOT NULL,
+    user_name       VARCHAR(255) NOT NULL,
+    user_email      VARCHAR(255) NOT NULL,
+    FOREIGN KEY (lesson_id) REFERENCES lessons(id),
+    UNIQUE KEY unique_reservation (date, time) 
 );
 
-INSERT INTO Les
+INSERT INTO reservations 
 (
-    Naam,
-    datum,
-    tijd,
-    MinAantalPersonen,
-    MaxAantalPersonen,
-    Beschikbaarheid,
-    Isactief,
-    Opmerking,
-    Datumaangemaakt,
-    Datumgewijzigd
+ date
+,time
+,lesson_id
+,reservation_date
+,user_name
+,user_email
 )
+
 VALUES
-('Emma Jansen', '2025-03-03', '09:00:00', 3, 8, 'Ingepland', 1, 'Ochtendles Yoga', NOW(), NOW()),
-('Liam Verhoeven', '2025-03-04', '14:30:00', 3, 9, 'Gestart', 1, 'Groepstraining Yoga', NOW(), NOW()),
-('Noah de Groot', '2025-03-05', '16:00:00', 3, 7, 'Niet gestart', 1, 'Ochtend Yoga', NOW(), NOW()),
-('Sophie Bakker', '2025-03-06', '18:15:00', 3, 9, 'Geannuleerd', 0, 'Te weinig aanmeldingen', NOW(), NOW()),
-('Daan van Dijk', '2025-03-07', '20:00:00', 3, 6, 'Ingepland', 1, 'MaandagAvond les Yoga', NOW(), NOW()),
-('Lisa de Wit', '2025-03-08', '10:00:00', 3, 8, 'Gestart', 1, 'Zaterdagavond Yoga', NOW(), NOW()),
-('Tom Willems', '2025-03-09', '11:30:00', 3, 5, 'Niet gestart', 1, 'Zondagochtend Yoga', NOW(), NOW());
+(1, '2025-03-01', 'John Doe', 'john.doe@example.com'),
+(2, '2025-03-01', 'Jane Smith', 'jane.smith@example.com'),
+(3, '2025-03-01', 'Emma Brown', 'emma.brown@example.com');
+
+DROP TABLE lessons;
+
+
+CREATE TABLE lessons (
+    id              INT AUTO_INCREMENT PRIMARY KEY,
+    name            VARCHAR(255) NOT NULL,
+    date            DATE NOT NULL,
+    time            TIME NOT NULL
+);
+
+
+INSERT INTO lessons (name, date, time)
+VALUES
+('Yoga', '2025-03-01', '09:00'),
+('Yin Yoga', '2025-03-01', '12:00');
+('Meditatie', '2025-03-01', '10:00'),
+('Pilates', '2025-03-01', '11:00'),
