@@ -20,20 +20,7 @@ CREATE TABLE IF NOT EXISTS reservations (
     UNIQUE KEY unique_reservation (date, time) 
 );
 
-INSERT INTO reservations 
-(
- date
-,time
-,lesson_id
-,reservation_date
-,user_name
-,user_email
-)
 
-VALUES
-(1, '2025-03-01', 'John Doe', 'john.doe@example.com'),
-(2, '2025-03-01', 'Jane Smith', 'jane.smith@example.com'),
-(3, '2025-03-01', 'Emma Brown', 'emma.brown@example.com');
 
 DROP TABLE lessons;
 

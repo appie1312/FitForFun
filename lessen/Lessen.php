@@ -79,7 +79,7 @@ $conn->close();
         <div id="reservation-message" class="alert alert-info"><?php echo $message; ?></div>
     <?php endif; ?>
 
-    <form method="POST" id="lesson-form">
+    <form method="POST" id="lesson-form"> 
         <div class="mb-3">
             <label for="lesson" class="form-label">Kies een les</label>
             <select class="form-select" id="lesson" name="lesson" onchange="loadCalendar()" required>
