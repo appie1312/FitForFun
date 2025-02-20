@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="lessen.css">
 <?php
 session_start();
 date_default_timezone_set('Europe/Amsterdam');
@@ -69,17 +70,17 @@ $conn->close();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="Lessen.css">
 </head>
-<body class="container mt-4">
+<body >
 
     <div id="navbar"></div>
-
+<div class="container mt-5">
     <h1 class="text-center">Agenda - <?php echo date('F Y'); ?></h1>
 
     <?php if (!empty($message)): ?>
         <div id="reservation-message" class="alert alert-info"><?php echo $message; ?></div>
     <?php endif; ?>
 
-    <form method="POST" id="lesson-form">
+    <form method="POST" id="lesson-form"> 
         <div class="mb-3">
             <label for="lesson" class="form-label">Kies een les</label>
             <select class="form-select" id="lesson" name="lesson" onchange="loadCalendar()" required>
@@ -125,7 +126,7 @@ $conn->close();
             <button class="btn btn-secondary mt-2" onclick="closeModal()">Sluiten</button>
         </form>
     </div>
-
+    </div>
    
 
     <script>
@@ -173,7 +174,7 @@ $conn->close();
             }, 5000); 
         <?php endif; ?>
     </script>
-<div class="leeg"></div>
+<div class="leeg"><br></div>
 <div id="footer"></div>
 
     <script src="/footer/footer.js"></script>
