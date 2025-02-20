@@ -126,7 +126,7 @@ $conn->close();
         </form>
     </div>
 
-    <div id="footer"></div>
+   
 
     <script>
         function loadCalendar() {
@@ -173,6 +173,8 @@ $conn->close();
             }, 5000); 
         <?php endif; ?>
     </script>
+
+<div id="footer"></div>
 
     <script src="/footer/footer.js"></script>
     <script src="/navbar/navbar.js"></script>
