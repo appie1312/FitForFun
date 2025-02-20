@@ -36,6 +36,6 @@ CREATE TABLE lessons (
 INSERT INTO lessons (name, date, time)
 VALUES
 ('Yoga', '2025-03-01', '09:00'),
-('Yin Yoga', '2025-03-01', '12:00');
+('Yin Yoga', '2025-03-01', '12:00'),
 ('Meditatie', '2025-03-01', '10:00'),
 ('Pilates', '2025-03-01', '11:00'),
