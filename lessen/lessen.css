@@ -30,3 +30,7 @@ td, th {
     padding: 20px; 
     border: 1px solid black; }
 
+.leeg {
+    width: 100vw;
+    height: 100vh;
+}

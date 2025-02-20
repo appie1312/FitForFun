@@ -173,7 +173,7 @@ $conn->close();
             }, 5000); 
         <?php endif; ?>
     </script>
-
+<div class="leeg"></div>
 <div id="footer"></div>
 
     <script src="/footer/footer.js"></script>
