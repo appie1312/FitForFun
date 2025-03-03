@@ -1,0 +1,63 @@
+      body {
+          background-color: #ffffff;
+          /* Wit als achtergrondkleur */
+          font-family: Arial, sans-serif;
+      }
+
+      .container {
+          background-color: #fcf7ef;
+          /* Secundaire kleur voor container */
+          padding: 30px;
+          border-radius: 8px;
+      }
+
+      h1,
+      h3 {
+          color: #000000;
+          /* Donkerblauw voor titels */
+          text-align: center;
+      }
+
+      .btn-custom {
+          background-color: #ff4c4c;
+          /* Call to action kleur */
+          color: white;
+          padding: 10px 20px;
+          border-radius: 5px;
+          font-weight: bold;
+          text-decoration: none;
+      }
+
+      .btn-custom:hover {
+          background-color: #e13b3b;
+          /* Donkerder rood bij hover */
+      }
+
+      .table {
+          margin-top: 20px;
+          width: 100%;
+          background-color: white;
+          border-radius: 8px;
+      }
+
+      .table thead {
+          background-color: #000000;
+          /* Blauwe koptekst */
+          color: white;
+      }
+
+      .table tbody tr:hover {
+          background-color: #f1f1f1;
+          /* Hover effect voor tabelrijen */
+      }
+
+      .table td,
+      .table th {
+          vertical-align: middle;
+          padding: 10px;
+          text-align: center;
+      }
+
+      .table td a {
+          text-decoration: none;
+      }
