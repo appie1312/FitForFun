@@ -65,7 +65,6 @@ $result = $statement->fetchAll(PDO::FETCH_OBJ);
                 <th>Max. Personen</th>
                 <th>Beschikbaarheid</th>
                 <th>Opmerking</th>
-                <th>Update</th>
                 <th>Delete</th>
             </thead>
             <tbody>
@@ -78,10 +77,6 @@ $result = $statement->fetchAll(PDO::FETCH_OBJ);
                         <td><?= $les->MaxAantalPersonen ?></td>
                         <td><?= $les->Beschikbaarheid ?></td>
                         <td><?= $les->Opmerking ?></td>
-                        <td class="text-center ">
-                          <a href="update.php?Id=<?= $les->Id; ?>" class="text-primary">
-                            <i class="bi bi-pencil-square"></i> 
-                          </a>                            </td>
                         <td class="text-center">
                           <a href="delete.php?Id=<?= $les->Id; ?>" class="text-danger">
                             <i class="bi bi-x-square-fill"></i>

@@ -66,3 +66,20 @@ VALUES
 ('Yoga Basics', '2025-03-10', '08:30:00', 3, 9, 'Ingepland', 1, 'Voor beginners, neem je eigen mat mee.'),
 ('Vinyasa Flow', '2025-03-12', '18:00:00', 3, 9, 'Niet gestart', 1, 'Dynamische yogales met ademhalingsoefeningen.'),
 ('Yin Yoga', '2025-03-15', '20:00:00', 3, 9, 'Ingepland', 1, 'Ontspannende les met lang aangehouden houdingen.');
+
+
+CREATE TABLE Gebruiker (
+    Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Voornaam VARCHAR(50) NOT NULL,
+    Tussenvoegsel VARCHAR(10) NULL,
+    Achternaam VARCHAR(50) NOT NULL,
+    Gebruikersnaam VARCHAR(100) NOT NULL,
+    Wachtwoord VARCHAR(20) NOT NULL,
+    IsIngelogd BIT NOT NULL,
+    Ingelogd DATE NOT NULL,
+    Uitgelogd DATE NOT NULL,
+    Isactief BIT NOT NULL,
+    Opmerking VARCHAR(250) NULL,
+    Datumaangemaakt DATETIME(6) NOT NULL,
+    Datumgewijzigd DATETIME(6) NOT NULL
+);
