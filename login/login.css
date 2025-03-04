@@ -1,0 +1,9 @@
+.knoppen {
+ background-color: #ff4c4c;
+ color: white;
+}
+
+.knoppen:hover {
+    background-color: #dd3f3f;
+    color: white;
+}
