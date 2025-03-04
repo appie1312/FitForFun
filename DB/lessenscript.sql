@@ -46,23 +46,29 @@ VALUES
 ('Pilates', '2025-03-01', '11:00'),
 
 
-CREATE TABLE Les (
-    Id INT PRIMARY KEY AUTO_INCREMENT,
-    Naam VARCHAR(50) NOT NULL,
-    Datum DATE NOT NULL,
-    Tijd TIME NOT NULL,
-    MinAantalPersonen TINYINT NOT NULL CHECK (MinAantalPersonen >= 3),
-    MaxAantalPersonen TINYINT NOT NULL CHECK (MaxAantalPersonen <= 9),
-    Beschikbaarheid ENUM('Ingepland', 'Niet gestart', 'Gestart', 'Geannuleerd') NOT NULL,
-    Isactief BIT NOT NULL,
-    Opmerking VARCHAR(250) NULL,
-    Datumaangemaakt DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
-    Datumgewijzigd DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+CREATE TABLE Lessen	 
+(
+    les_id          INT PRIMARY                         KEY AUTO_INCREMENT,
+    les_naam        VARCHAR(255)        NOT NULL,
+    beschrijving                                        TEXT,
+    duur            INT,  
+    leraar          VARCHAR(255),
+    datum           DATE
 );
 
+INSERT INTO Lessen 
+(
+    les_naam
+    ,beschrijving
+    ,duur
+    ,leraar
+    ,datum
+) 
 
-INSERT INTO Les (Naam, Datum, Tijd, MinAantalPersonen, MaxAantalPersonen, Beschikbaarheid, Isactief, Opmerking) 
-VALUES 
-('Yoga Basics', '2025-03-10', '08:30:00', 3, 9, 'Ingepland', 1, 'Voor beginners, neem je eigen mat mee.'),
-('Vinyasa Flow', '2025-03-12', '18:00:00', 3, 9, 'Niet gestart', 1, 'Dynamische yogales met ademhalingsoefeningen.'),
-('Yin Yoga', '2025-03-15', '20:00:00', 3, 9, 'Ingepland', 1, 'Ontspannende les met lang aangehouden houdingen.');
+
+VALUES
+('Yoga', 'Een algemene yogales waarbij verschillende houdingen (asanas) en ademhalingstechnieken (pranayama) worden beoefend om flexibiliteit, kracht en ontspanning te bevorderen.', 60, 'Anna de Vries', '2025-03-10'),
+('Yin Yoga', 'Yin Yoga is een langzame, rustgevende yoga-stijl waarbij houdingen langer worden vastgehouden om dieper in het bindweefsel te rekken en ontspanning te bevorderen.', 75, 'Mark Jansen', '2025-03-12'),
+('Meditatie', 'Meditatie sessies waarbij verschillende technieken worden gebruikt om de geest te kalmeren, focus te verbeteren en stress te verminderen.', 30, 'Sophie Bakker', '2025-03-15'),
+('Pilates', 'Pilates richt zich op het versterken van de core-spieren, verbeteren van de houding en flexibiliteit door gecontroleerde bewegingen en ademhalingstechnieken.', 60, 'Tom de Wit', '2025-03-17');
+
