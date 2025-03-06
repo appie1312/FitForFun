@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ]);
 
         // Redirect naar index.php na toevoegen
-        header("Location: index.php");
+        header("Location: medewerekers.php");
         exit;
     } else {
         $error = "Vul alle verplichte velden in!";
