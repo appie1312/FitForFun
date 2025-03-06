@@ -17,20 +17,27 @@
             <div class="col-2"></div>
             <div class="col-8">
                 <h1 class="my-5 ">INLOGGEN</h1>
-                <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                <form name="f1" action="authentication.php" onsubmit="return validation()" method="POST">
 
-                <label for="inputPassword5" class="form-label">Password</label>
-                <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-                <button class="btn knoppen w-30 my-3 ">inloggen</button>
+                    <label for="gebruikersnaam" class="form-label">gebruikersnaam</label>
+                    <input type="text" class="form-control" id="gebruikersnaam" placeholder="John Doe"
+                        name="gebruikersnaam">
+
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" class="form-control" name="password"
+                        aria-describedby="passwordHelpBlock">
+                    <button class="btn knoppen w-30 my-3 " type="submit">inloggen</button>
+
+                </form>
                 <hr>
-                <p>Hebt u geen account? <a href="#">Aanmelden</a></p>
+                <p>Hebt u geen account? <a href="/signup/signup.html">Aanmelden</a></p>
             </div>
             <div class="col-2"></div>
         </div>
     </div>
 
     <div id="footer"></div>
+    <script src="/FitForFun/login/script.js"></script>
     <script src="/footer/footer.js"></script>
     <script src="/navbar/navbar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
