@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label class="form-check-label">Actief</label>
                     </div>
                     <button type="submit" class="btn btn-primary">Toevoegen</button>
-                    <a href="index.php" class="btn btn-secondary">Annuleren</a>
+                    <a href="medewerkers.php" class="btn btn-secondary">Annuleren</a>
                 </form>
             </div>
             <div class="col-2"></div>
