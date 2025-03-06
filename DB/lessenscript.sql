@@ -40,6 +40,73 @@ INSERT INTO reservations
     user_email
 )
 VALUES
-('2025-03-01', '09:00', 1, '2025-02-20', 'John Doe', 'john.doe@example.com'),
-('2025-03-01', '12:00', 2, '2025-02-20', 'Jane Smith', 'jane.smith@example.com'),
-('2025-03-01', '10:00', 3, '2025-02-20', 'Emma Brown', 'emma.brown@example.com');
+('Yoga', '2025-03-01', '09:00'),
+('Yin Yoga', '2025-03-01', '12:00'),
+('Meditatie', '2025-03-01', '10:00'),
+('Pilates', '2025-03-01', '11:00'),
+
+
+CREATE TABLE Lessen	 
+(
+    les_id          INT PRIMARY                         KEY AUTO_INCREMENT,
+    les_naam        VARCHAR(255)        NOT NULL,
+    beschrijving                                        TEXT,
+    duur            INT,  
+    leraar          VARCHAR(255),
+    datum           DATE
+);
+
+INSERT INTO Lessen 
+(
+    les_naam
+    ,beschrijving
+    ,duur
+    ,leraar
+    ,datum
+) 
+
+
+VALUES
+('Yoga', 'Een algemene yogales waarbij verschillende houdingen (asanas) en ademhalingstechnieken (pranayama) worden beoefend om flexibiliteit, kracht en ontspanning te bevorderen.', 60, 'Anna de Vries', '2025-03-10'),
+('Yin Yoga', 'Yin Yoga is een langzame, rustgevende yoga-stijl waarbij houdingen langer worden vastgehouden om dieper in het bindweefsel te rekken en ontspanning te bevorderen.', 75, 'Mark Jansen', '2025-03-12'),
+('Meditatie', 'Meditatie sessies waarbij verschillende technieken worden gebruikt om de geest te kalmeren, focus te verbeteren en stress te verminderen.', 30, 'Sophie Bakker', '2025-03-15'),
+('Pilates', 'Pilates richt zich op het versterken van de core-spieren, verbeteren van de houding en flexibiliteit door gecontroleerde bewegingen en ademhalingstechnieken.', 60, 'Tom de Wit', '2025-03-17');
+
+
+
+CREATE TABLE Gebruiker (
+    Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Voornaam VARCHAR(50) NOT NULL,
+    Tussenvoegsel VARCHAR(10) NULL,
+    Achternaam VARCHAR(50) NOT NULL,
+    Gebruikersnaam VARCHAR(100) NOT NULL,
+    Wachtwoord VARCHAR(20) NOT NULL,
+    IsIngelogd BIT NOT NULL,
+    Ingelogd DATE NOT NULL,
+    Uitgelogd DATE NOT NULL,
+    Isactief BIT NOT NULL,
+    Opmerking VARCHAR(250) NULL,
+    Datumaangemaakt DATETIME(6) NOT NULL,
+    Datumgewijzigd DATETIME(6) NOT NULL
+);
+
+CREATE TABLE Les (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    Naam VARCHAR(50) NOT NULL,
+    Datum DATE NOT NULL,
+    Tijd TIME NOT NULL,
+    MinAantalPersonen TINYINT NOT NULL CHECK (MinAantalPersonen >= 3),
+    MaxAantalPersonen TINYINT NOT NULL CHECK (MaxAantalPersonen <= 9),
+    Beschikbaarheid ENUM('Ingepland', 'Niet gestart', 'Gestart', 'Geannuleerd') NOT NULL,
+    Isactief BIT NOT NULL,
+    Opmerking VARCHAR(250) NULL,
+    Datumaangemaakt DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    Datumgewijzigd DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+);
+
+
+INSERT INTO Les (Naam, Datum, Tijd, MinAantalPersonen, MaxAantalPersonen, Beschikbaarheid, Isactief, Opmerking) 
+VALUES 
+('Yoga Basics', '2025-03-10', '08:30:00', 3, 9, 'Ingepland', 1, 'Voor beginners, neem je eigen mat mee.'),
+('Vinyasa Flow', '2025-03-12', '18:00:00', 3, 9, 'Niet gestart', 1, 'Dynamische yogales met ademhalingsoefeningen.'),
+('Yin Yoga', '2025-03-15', '20:00:00', 3, 9, 'Ingepland', 1, 'Ontspannende les met lang aangehouden houdingen.');
