@@ -111,9 +111,7 @@ VALUES
 ('Vinyasa Flow', '2025-03-12', '18:00:00', 3, 9, 'Niet gestart', 1, 'Dynamische yogales met ademhalingsoefeningen.'),
 ('Yin Yoga', '2025-03-15', '20:00:00', 3, 9, 'Ingepland', 1, 'Ontspannende les met lang aangehouden houdingen.');
 
-DROP DATABASE IF EXISTS `Medewerkers`;
-CREATE DATABASE `Medewerkers`;
-USE `Medewerkers`;
+
 
 CREATE TABLE MedewerkersOverzicht
 (
@@ -122,7 +120,7 @@ CREATE TABLE MedewerkersOverzicht
     Tussenvoegsel       VARCHAR(10) NULL,
     Achternaam          VARCHAR(50) NOT NULL,
     Nummer              MEDIUMINT UNSIGNED NOT NULL,
-    Medewerkersoort     ENUM('Manager', 'Beheerder', 'DiskMedewerker') NOT NULL,
+    Medewerkersoort     VARCHAR(20) NOT NULL, 
     IsActief            BIT NOT NULL DEFAULT 1,
     Opmerking           VARCHAR(250) NULL,
     DatumAangemaakt     DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
