@@ -7,3 +7,7 @@
     background-color: #dd3f3f;
     color: white;
 }
+
+form i {
+    cursor: pointer;
+}

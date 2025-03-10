@@ -31,19 +31,12 @@ CREATE TABLE IF NOT EXISTS reservations (
 );
 
 INSERT INTO reservations 
-(
-    date,
-    time,
-    lesson_id,
-    reservation_date,
-    user_name,
-    user_email
-)
+(date, time, lesson_id, reservation_date, user_name, user_email) 
 VALUES
-('Yoga', '2025-03-01', '09:00'),
-('Yin Yoga', '2025-03-01', '12:00'),
-('Meditatie', '2025-03-01', '10:00'),
-('Pilates', '2025-03-01', '11:00'),
+('2025-03-01', '09:00:00', 1, '2025-02-28', 'John Doe', 'john@example.com'),
+('2025-03-01', '12:00:00', 2, '2025-02-28', 'Jane Smith', 'jane@example.com'),
+('2025-03-01', '10:00:00', 3, '2025-02-28', 'Mike Johnson', 'mike@example.com'),
+('2025-03-01', '11:00:00', 4, '2025-02-28', 'Emily Davis', 'emily@example.com');
 
 
 CREATE TABLE Lessen	 
@@ -89,6 +82,13 @@ CREATE TABLE Gebruiker (
     Datumaangemaakt DATETIME(6) NOT NULL,
     Datumgewijzigd DATETIME(6) NOT NULL
 );
+
+INSERT INTO Gebruiker (Voornaam, Tussenvoegsel, Achternaam, Gebruikersnaam, Wachtwoord, IsIngelogd, Ingelogd, Uitgelogd, Isactief, Opmerking, Datumaangemaakt, Datumgewijzigd) 
+VALUES 
+('Jan', 'van', 'Dijk', 'jvandijk', 'wachtwoord123', 0, '2024-03-06', '2024-03-06', 1, 'Eerste gebruiker', NOW(), NOW()), 
+('Lisa', NULL, 'Jansen', 'ljansen', 'geheim123', 1, '2024-03-06', '2024-03-06', 1, 'Tweede gebruiker', NOW(), NOW()), 
+('Ahmed', 'el', 'Bakri', 'test123', 'test123', 0, '2024-03-06', '2024-03-06', 1, 'Derde gebruiker', NOW(), NOW());
+
 
 CREATE TABLE Les (
     Id INT PRIMARY KEY AUTO_INCREMENT,
