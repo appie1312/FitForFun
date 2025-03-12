@@ -13,11 +13,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $hashedPassword = password_hash($wachtwoord, PASSWORD_DEFAULT);
-
     $stmt = $conn->prepare("INSERT INTO Gebruiker 
         (Voornaam, Tussenvoegsel, Achternaam, Gebruikersnaam, Wachtwoord, IsIngelogd, Ingelogd, Uitgelogd, Isactief, Datumaangemaakt, Datumgewijzigd) 
         VALUES (?, ?, ?, ?, ?, 0, NULL, NULL, 1, NOW(), NOW())");
-    $stmt->bind_param("sssssssss", $voornaam, $tussenvoegsel, $achternaam, $gebruikersnaam, $hashedPassword, $isIngelogd, $ingelogd, $uitgelogd, $isActief);
+
+    // Bind de parameters
+    $stmt->bind_param("ssssss", $voornaam, $tussenvoegsel, $achternaam, $gebruikersnaam, $hashedPassword, $isActief);
 
     if ($stmt->execute()) {
         echo "<script>alert('Registratie succesvol! Je kunt nu inloggen.'); window.location.href='login.html';</script>";

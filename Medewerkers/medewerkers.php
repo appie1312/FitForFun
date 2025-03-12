@@ -1,4 +1,13 @@
 <?php
+session_start();
+
+// Controleer of de gebruiker is ingelogd
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    // Stuur de gebruiker naar de loginpagina
+    header("Location: login.php");
+    exit();
+}
+
 // Controleer of het configuratiebestand bestaat
 if (!file_exists('config.php')) {
     die("Fout: Configuratiebestand niet gevonden. Zorg ervoor dat config/config.php bestaat.");
