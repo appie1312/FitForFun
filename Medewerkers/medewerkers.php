@@ -4,7 +4,7 @@ session_start();
 // Controleer of de gebruiker is ingelogd
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     // Stuur de gebruiker naar de loginpagina
-    header("Location: login.php");
+    header("Location: /login/login.php");
     exit();
 }
 

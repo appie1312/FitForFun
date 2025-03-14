@@ -1,33 +1,68 @@
-<?php
-include('signupconfig.php');
+<!DOCTYPE html>
+<html lang="nl">
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $voornaam = trim($_POST["voornaam"]);
-    $tussenvoegsel = trim($_POST["tussenvoegsel"]);
-    $achternaam = trim($_POST["achternaam"]);
-    $gebruikersnaam = trim($_POST["gebruikersnaam"]);
-    $wachtwoord = $_POST["wachtwoord"];
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registreren</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/login/login.css">
+</head>
 
-    if (empty($voornaam) || empty($achternaam) || empty($gebruikersnaam) || empty($wachtwoord)) {
-        die("Vul alle verplichte velden in.");
-    }
+<body>
+    <div id="navbar"></div>
 
-    $hashedPassword = password_hash($wachtwoord, PASSWORD_DEFAULT);
-    $stmt = $conn->prepare("INSERT INTO Gebruiker 
-        (Voornaam, Tussenvoegsel, Achternaam, Gebruikersnaam, Wachtwoord, IsIngelogd, Ingelogd, Uitgelogd, Isactief, Datumaangemaakt, Datumgewijzigd) 
-        VALUES (?, ?, ?, ?, ?, 0, NULL, NULL, 1, NOW(), NOW())");
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <h1 class="my-5">Registreren</h1>
+                <form id="signupForm" action="signupcheck.php" method="POST">
 
-    // Bind de parameters
-    $stmt->bind_param("ssssss", $voornaam, $tussenvoegsel, $achternaam, $gebruikersnaam, $hashedPassword, $isActief);
+                    <label for="voornaam" class="form-label">Voornaam</label>
+                    <input type="text" class="form-control" id="voornaam" name="voornaam" required>
 
-    if ($stmt->execute()) {
-        echo "<script>alert('Registratie succesvol! Je kunt nu inloggen.'); window.location.href='login.html';</script>";
-    } else {
-        echo "Fout bij registratie: " . $stmt->error;
-    }
+                    <label for="tussenvoegsel" class="form-label">Tussenvoegsel (optioneel)</label>
+                    <input type="text" class="form-control" id="tussenvoegsel" name="tussenvoegsel">
 
-    $stmt->close();
-}
+                    <label for="achternaam" class="form-label">Achternaam</label>
+                    <input type="text" class="form-control" id="achternaam" name="achternaam" required>
 
-$conn->close();
-?>
+                    <label for="gebruikersnaam" class="form-label">Gebruikersnaam</label>
+                    <input type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam" required>
+
+                    <label for="wachtwoord" class="form-label">Wachtwoord</label>
+                    <input type="password" class="form-control" id="wachtwoord" name="wachtwoord" required>
+
+                    <label for="tweedewachtwoord" class="form-label">Herhaal wachtwoord</label>
+                    <input type="password" class="form-control" id="tweedewachtwoord" name="tweedewachtwoord" required>
+
+                    <button class="btn knoppen w-30 my-3" type="submit">Registreren</button>
+                </form>
+
+                <!-- Weergave van foutmelding -->
+                <?php if (!empty($foutmelding)): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php echo $foutmelding; ?>
+                    </div>
+                <?php endif; ?>
+
+                <hr>
+                <p>Heb je al een account? <a href="/login/login.php">Inloggen</a></p>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="/FitForFun/login/script.js"></script>
+    <script src="/footer/footer.js"></script>
+    <script src="/navbar/navbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
