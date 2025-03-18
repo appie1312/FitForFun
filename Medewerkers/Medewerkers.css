@@ -1,30 +1,28 @@
-/* Medewerkers.css */
 
-/* Algemene stijlen */
 body {
-    background-color: white; /* Achtergrondkleur */
-    color: #333; /* Algemene tekstkleur */
+    background-color: white; 
+    color: #333; 
     font-family: Arial, sans-serif;
 }
 
-/* Titels */
+
 h3 {
-    color: #fcf7ef; /* Secundaire kleur */
-    background-color: #ff4c4c; /* Call-to-action kleur */
+    color: #fcf7ef;
+    background-color: #ff4c4c; 
     padding: 10px;
     text-align: center;
     border-radius: 5px;
 }
 
-/* Container stijlen */
+
 .container {
-    background-color: #fcf7ef; /* Secundaire kleur */
+    background-color: #fcf7ef; 
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Tabel stijlen */
+
 .table {
     background-color: white;
 }
@@ -34,22 +32,22 @@ h3 {
 }
 
 th {
-    background-color: #ff4c4c; /* Call-to-action kleur */
-    color: #ffffff; /* Tekstkleur in call-to-action */
+    background-color: #ff4c4c; 
+    color: #ffffff; 
     text-align: center;
 }
 
-/* Call-to-action icoon */
+
 .bi-plus-square-fill {
     font-size: 1.5rem;
-    color: #ff4c4c; /* Call-to-action kleur */
+    color: #ff4c4c; 
 }
 
 .bi-plus-square-fill:hover {
-    color: #d63a3a; /* Donkerdere tint voor hover-effect */
+    color: #d63a3a; 
 }
 
-/* Responsiviteit */
+
 @media (max-width: 768px) {
     .container {
         padding: 10px;
