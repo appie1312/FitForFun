@@ -7,10 +7,10 @@
 $dbHost = 'localhost';
 
 // Naam van de database
-$dbName = 'medewerkers';
+$dbName = 'FitForFun';
 
 // Naam van de gebruiker die de queries uitvoerd
-$dbUser = 'root1';
+$dbUser = 'root';
 
 // Wachtwoord van gebruiker rra-2408b
 $dbPass = '';

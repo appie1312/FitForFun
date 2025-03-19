@@ -50,10 +50,18 @@ CREATE TABLE Gebruiker (
 
 INSERT INTO Gebruiker (Voornaam, Tussenvoegsel, Achternaam, Gebruikersnaam, Wachtwoord, IsIngelogd, Ingelogd, Uitgelogd, Isactief, Opmerking, Datumaangemaakt, Datumgewijzigd) 
 VALUES 
-('Jan', 'van', 'Dijk', 'jvandijk', 'wachtwoord123', 0, '2024-03-06', '2024-03-06', 1, 'Eerste gebruiker', NOW(), NOW()), 
-('Lisa', NULL, 'Jansen', 'ljansen', 'geheim123', 1, '2024-03-06', '2024-03-06', 1, 'Tweede gebruiker', NOW(), NOW()), 
-('Ahmed', 'el', 'Bakri', 'test123', 'test123', 0, '2024-03-06', '2024-03-06', 1, 'Derde gebruiker', NOW(), NOW());
+('Ahmed', 'el', 'Bakri', '1', '1', 0, '2024-03-06', '2024-03-06', 1, 'Derde gebruiker', NOW(), NOW());
 
+CREATE TABLE Rol (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    GebruikerId INT NOT NULL,
+    Naam VARCHAR(100) NOT NULL CHECK (Naam IN ('Lid', 'Medewerker', 'Administrator', 'Gastgebruiker')),
+    Isactief BIT NOT NULL,
+    Opmerking VARCHAR(250) NULL,
+    Datumaangemaakt DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    Datumgewijzigd DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+    CONSTRAINT FK_Gebruiker FOREIGN KEY (GebruikerId) REFERENCES Gebruiker(Id)
+);
 
 CREATE TABLE Les (
     Id INT PRIMARY KEY AUTO_INCREMENT,
@@ -77,8 +85,6 @@ VALUES
 ('Yin Yoga', '2025-03-15', '20:00:00', 3, 9, 'Ingepland', 1, 'Ontspannende les met lang aangehouden houdingen.');
 
 
-CREATE DATABASE `Medewerkers`;
-
 
 CREATE TABLE MedewerkersOverzicht
 (
@@ -87,7 +93,7 @@ CREATE TABLE MedewerkersOverzicht
     Tussenvoegsel       VARCHAR(10) NULL,
     Achternaam          VARCHAR(50) NOT NULL,
     Nummer              MEDIUMINT UNSIGNED NOT NULL,
-    Medewerkersoort     ENUM('Manager', 'Beheerder', 'DiskMedewerker') NOT NULL,
+    Medewerkersoort     VARCHAR(20) NOT NULL, 
     IsActief            BIT NOT NULL DEFAULT 1,
     Opmerking           VARCHAR(250) NULL,
     DatumAangemaakt     DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),

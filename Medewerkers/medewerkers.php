@@ -1,4 +1,13 @@
 <?php
+session_start();
+
+// Controleer of de gebruiker is ingelogd
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    // Stuur de gebruiker naar de loginpagina
+    header("Location: /login/login.php");
+    exit();
+}
+
 // Controleer of het configuratiebestand bestaat
 if (!file_exists('config.php')) {
     die("Fout: Configuratiebestand niet gevonden. Zorg ervoor dat config/config.php bestaat.");
@@ -34,6 +43,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MedewerkersOverzicht</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Medewerkers.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
