@@ -6,29 +6,43 @@ USE `FitForFun`;
 
 CREATE TABLE Lessen	 
 (
-    les_id          INT PRIMARY                         KEY AUTO_INCREMENT,
-    les_naam        VARCHAR(255)        NOT NULL,
-    beschrijving                                        TEXT,
-    duur            INT,  
-    leraar          VARCHAR(255),
-    datum           DATE
+    les_id              INT                     NOT NULL                    PRIMARY KEY AUTO_INCREMENT,
+    naam                VARCHAR(50)             NOT NULL,
+    prijs               DECIMAL(5,2)            NOT NULL,
+    datum               DATE                    NOT NULL, 
+    tijd                TIME                    NOT NULL,
+    MinAantalPersonen   TINYINT                 NOT NULL,   
+    MaxAantalPersonen   TINYINT                 NOT NULL,
+    Beschikbaarheid     VARCHAR(50)             NOT NULL,
+    IsActief            BIT                     NOT NULL, 
+    Opmerking           VARCHAR(250)            NOT NULL,
+    DatumAangemaakt     DATETIME                NOT NULL,
+    DatumGewijzigd      DATETIME                NOT NULL
 );
 
 INSERT INTO Lessen 
 (
-    les_naam
-    ,beschrijving
-    ,duur
-    ,leraar
+    naam
+    ,prijs
     ,datum
-) 
+    ,tijd
+    ,MinAantalPersonen
+    ,MaxAantalPersonen
+    ,Beschikbaarheid
+    ,IsActief
+    ,Opmerking
+    ,DatumAangemaakt
+    ,DatumGewijzigd
+)
 
 
 VALUES
-('Yoga', 'Een algemene yogales waarbij verschillende houdingen (asanas) en ademhalingstechnieken (pranayama) worden beoefend om flexibiliteit, kracht en ontspanning te bevorderen.', 60, 'Anna de Vries', '2025-03-10'),
-('Yin Yoga', 'Yin Yoga is een langzame, rustgevende yoga-stijl waarbij houdingen langer worden vastgehouden om dieper in het bindweefsel te rekken en ontspanning te bevorderen.', 75, 'Mark Jansen', '2025-03-12'),
-('Meditatie', 'Meditatie sessies waarbij verschillende technieken worden gebruikt om de geest te kalmeren, focus te verbeteren en stress te verminderen.', 30, 'Sophie Bakker', '2025-03-15'),
-('Pilates', 'Pilates richt zich op het versterken van de core-spieren, verbeteren van de houding en flexibiliteit door gecontroleerde bewegingen en ademhalingstechnieken.', 60, 'Tom de Wit', '2025-03-17');
+('Yoga', 29.99, NOW(), '01:00:00', 3, 9, 'Beschikbaar', 1, 'Ochtendles', SYSDATE(6), SYSDATE(6)),
+('Yin Yoga', 34.99, NOW(), '01:00:00', 3, 9, 'Beschikbaar', 1, 'Avondles', SYSDATE(6), SYSDATE(6)),
+('Meditatie', 24.99, NOW(), '01:30:00', 3, 9, 'Beschikbaar', 1, 'Middagles', SYSDATE(6), SYSDATE(6)),
+('Pilates', 29.99, NOW(),  '01:30:00', 3, 9, 'Beschikbaar', 1, 'Ochtendles', SYSDATE(6), SYSDATE(6));
+    
+
 
 
 
