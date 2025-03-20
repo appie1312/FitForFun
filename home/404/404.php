@@ -17,7 +17,7 @@
         <span class="four"><span class="screen-reader-text">4</span></span>
     </section>
     <div class="link-container">
-        <a  href="/home/index.html"
+        <a  href="/home/index.php"
             class="more-link">Terug naar home</a>
     </div>
 </body>
