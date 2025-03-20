@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $IsActief = isset($_POST['IsActief']) ? 1 : 0; 
 
     if ($VoorNaam && $Achternaam && $Nummer && $Medewerkersoort) {
-        $sql = "INSERT INTO MedewerkersOverzicht (VoorNaam, Tussenvoegsel, Achternaam, Nummer, Medewerkersoort, IsActief, DatumAangemaakt, DatumGewijzigd) 
+        $sql = "INSERT INTO Medewerker (VoorNaam, Tussenvoegsel, Achternaam, Nummer, Medewerkersoort, IsActief, DatumAangemaakt, DatumGewijzigd) 
                 VALUES (:VoorNaam, :Tussenvoegsel, :Achternaam, :Nummer, :Medewerkersoort, :IsActief, SYSDATE(6), SYSDATE(6))";
         
         $stmt = $pdo->prepare($sql);
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ]);
 
         // Redirect naar index.php na toevoegen
-        header("Location: medewerekers.php");
+        header("Location: medewerkers.php");
         exit;
     } else {
         $error = "Vul alle verplichte velden in!";
