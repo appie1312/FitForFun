@@ -40,7 +40,6 @@
             <div class="col-2"></div>
         </div>
     </div>
-                    <div class="spacer"></div>
     <div id="footer"></div>
     <script src="/FitForFun/login/script.js"></script>
     <script src="/footer/footer.js"></script>
