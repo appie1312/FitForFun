@@ -4,66 +4,45 @@ CREATE DATABASE `FitForFun`;
 
 USE `FitForFun`;
 
-CREATE TABLE IF NOT EXISTS lessons (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    date DATE NOT NULL,
-    time TIME NOT NULL
-);
-
-INSERT INTO lessons (name, date, time)
-VALUES
-('Yoga', '2025-03-01', '09:00'),
-('Yin Yoga', '2025-03-01', '12:00'),
-('Meditatie', '2025-03-01', '10:00'),
-('Pilates', '2025-03-01', '11:00');
-
-CREATE TABLE IF NOT EXISTS reservations (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    date DATE NOT NULL,
-    time TIME NOT NULL,
-    lesson_id INT,
-    reservation_date DATE NOT NULL,
-    user_name VARCHAR(255) NOT NULL,
-    user_email VARCHAR(255) NOT NULL,
-    FOREIGN KEY (lesson_id) REFERENCES lessons(id),
-    UNIQUE KEY unique_reservation (date, time)
-);
-
-INSERT INTO reservations 
-(date, time, lesson_id, reservation_date, user_name, user_email) 
-VALUES
-('2025-03-01', '09:00:00', 1, '2025-02-28', 'John Doe', 'john@example.com'),
-('2025-03-01', '12:00:00', 2, '2025-02-28', 'Jane Smith', 'jane@example.com'),
-('2025-03-01', '10:00:00', 3, '2025-02-28', 'Mike Johnson', 'mike@example.com'),
-('2025-03-01', '11:00:00', 4, '2025-02-28', 'Emily Davis', 'emily@example.com');
-
-
 CREATE TABLE Lessen	 
 (
-    les_id          INT PRIMARY                         KEY AUTO_INCREMENT,
-    les_naam        VARCHAR(255)        NOT NULL,
-    beschrijving                                        TEXT,
-    duur            INT,  
-    leraar          VARCHAR(255),
-    datum           DATE
+    les_id              INT                     NOT NULL                    PRIMARY KEY AUTO_INCREMENT,
+    naam                VARCHAR(50)             NOT NULL,
+    prijs               DECIMAL(5,2)            NOT NULL,
+    datum               DATE                    NOT NULL, 
+    tijd                TIME                    NOT NULL,
+    MinAantalPersonen   TINYINT                 NOT NULL,   
+    MaxAantalPersonen   TINYINT                 NOT NULL,
+    Beschikbaarheid     VARCHAR(50)             NOT NULL,
+    IsActief            BIT                     NOT NULL, 
+    Opmerking           VARCHAR(250)            NOT NULL,
+    DatumAangemaakt     DATETIME                NOT NULL,
+    DatumGewijzigd      DATETIME                NOT NULL
 );
 
 INSERT INTO Lessen 
 (
-    les_naam
-    ,beschrijving
-    ,duur
-    ,leraar
+    naam
+    ,prijs
     ,datum
-) 
+    ,tijd
+    ,MinAantalPersonen
+    ,MaxAantalPersonen
+    ,Beschikbaarheid
+    ,IsActief
+    ,Opmerking
+    ,DatumAangemaakt
+    ,DatumGewijzigd
+)
 
 
 VALUES
-('Yoga', 'Een algemene yogales waarbij verschillende houdingen (asanas) en ademhalingstechnieken (pranayama) worden beoefend om flexibiliteit, kracht en ontspanning te bevorderen.', 60, 'Anna de Vries', '2025-03-10'),
-('Yin Yoga', 'Yin Yoga is een langzame, rustgevende yoga-stijl waarbij houdingen langer worden vastgehouden om dieper in het bindweefsel te rekken en ontspanning te bevorderen.', 75, 'Mark Jansen', '2025-03-12'),
-('Meditatie', 'Meditatie sessies waarbij verschillende technieken worden gebruikt om de geest te kalmeren, focus te verbeteren en stress te verminderen.', 30, 'Sophie Bakker', '2025-03-15'),
-('Pilates', 'Pilates richt zich op het versterken van de core-spieren, verbeteren van de houding en flexibiliteit door gecontroleerde bewegingen en ademhalingstechnieken.', 60, 'Tom de Wit', '2025-03-17');
+('Yoga', 29.99, NOW(), '01:00:00', 3, 9, 'Beschikbaar', 1, 'Ochtendles', SYSDATE(6), SYSDATE(6)),
+('Yin Yoga', 34.99, NOW(), '01:00:00', 3, 9, 'Beschikbaar', 1, 'Avondles', SYSDATE(6), SYSDATE(6)),
+('Meditatie', 24.99, NOW(), '01:30:00', 3, 9, 'Beschikbaar', 1, 'Middagles', SYSDATE(6), SYSDATE(6)),
+('Pilates', 29.99, NOW(),  '01:30:00', 3, 9, 'Beschikbaar', 1, 'Ochtendles', SYSDATE(6), SYSDATE(6));
+    
+
 
 
 
@@ -152,5 +131,4 @@ VALUES
   ('Nico', 'van', 'Brugen', 2, 'Beheerder', 1, SYSDATE(6), SYSDATE(6)),
   ('Denis', NULL, 'Law', 3, 'Beheerder', 1, SYSDATE(6), SYSDATE(6)),
   ('Robert', 'van', 'Hammer', 4, 'DiskMedewerker', 1, SYSDATE(6), SYSDATE(6));
-
 

@@ -10,3 +10,6 @@ define('DB_PASS', '');
 define('URLROOT', 'http://www.project-fitforfun');
 
 define('APPROOT', dirname(dirname(__FILE__)));
+
+
+
