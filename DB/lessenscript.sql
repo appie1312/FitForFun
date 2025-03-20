@@ -8,9 +8,10 @@ CREATE TABLE Lessen
 (
     les_id              INT                     NOT NULL                    PRIMARY KEY AUTO_INCREMENT,
     naam                VARCHAR(50)             NOT NULL,
+    tijd                TIME                    NOT NULL, 
     prijs               DECIMAL(5,2)            NOT NULL,
     datum               DATE                    NOT NULL, 
-    tijd                TIME                    NOT NULL,
+    tijdduur            TIME                    NOT NULL,
     MinAantalPersonen   TINYINT                 NOT NULL,   
     MaxAantalPersonen   TINYINT                 NOT NULL,
     Beschikbaarheid     VARCHAR(50)             NOT NULL,
@@ -23,9 +24,10 @@ CREATE TABLE Lessen
 INSERT INTO Lessen 
 (
     naam
+    ,tijd
     ,prijs
     ,datum
-    ,tijd
+    ,tijdduur
     ,MinAantalPersonen
     ,MaxAantalPersonen
     ,Beschikbaarheid
@@ -37,10 +39,10 @@ INSERT INTO Lessen
 
 
 VALUES
-('Yoga', 29.99, NOW(), '01:00:00', 3, 9, 'Beschikbaar', 1, 'Ochtendles', SYSDATE(6), SYSDATE(6)),
-('Yin Yoga', 34.99, NOW(), '01:00:00', 3, 9, 'Beschikbaar', 1, 'Avondles', SYSDATE(6), SYSDATE(6)),
-('Meditatie', 24.99, NOW(), '01:30:00', 3, 9, 'Beschikbaar', 1, 'Middagles', SYSDATE(6), SYSDATE(6)),
-('Pilates', 29.99, NOW(),  '01:30:00', 3, 9, 'Beschikbaar', 1, 'Ochtendles', SYSDATE(6), SYSDATE(6));
+('Yoga', '09:00', 29.99, NOW(), '01:00:00', 3, 9, 'Beschikbaar', 1, 'Ochtendles', SYSDATE(6), SYSDATE(6)),
+('Yin Yoga', '20:00', 34.99, NOW(), '01:00:00', 3, 9, 'Beschikbaar', 1, 'Avondles', SYSDATE(6), SYSDATE(6)),
+('Meditatie', '13:00',  24.99,NOW(), '01:30:00', 3, 9, 'Beschikbaar', 1, 'Middagles', SYSDATE(6), SYSDATE(6)),
+('Pilates', '10:00', 29.99, NOW(),  '01:30:00', 3, 9, 'Beschikbaar', 1, 'Ochtendles', SYSDATE(6), SYSDATE(6));
     
 
 

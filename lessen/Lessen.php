@@ -55,7 +55,7 @@ $conn->close();
             <div class="row my-2">
             <div class="col-2"></div>
             <div class="col-8">
-                Invoegen nieuwe medewerker: 
+                Invoegen nieuwe Les: 
                 <a href="addlessen.php"><i class="bi bi-plus-square-fill text-danger"></i></a>
                 </div>
             <div class="col-2"></div>
@@ -70,18 +70,20 @@ $conn->close();
                         <thead>
                             <tr>
                                 <th>naam</th>
+                                <th>tijd</th>
                                 <th>prijs</th>
                                 <th>datum</th>
-                                <th>tijd</th>
+                                <th>tijdduur</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach($lessen as $les) : ?>
                                 <tr>
                                     <td><?= $les->naam ?></td>
+                                    <td><?= $les->tijd ?></td>
                                     <td><?= $les->prijs ?></td>
                                     <td><?= $les->datum ?></td>
-                                    <td><?= $les->tijd ?></td>
+                                    <td><?= $les->tijdduur ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
