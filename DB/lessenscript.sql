@@ -98,6 +98,7 @@ CREATE TABLE Rol (
     CONSTRAINT FK_Gebruiker FOREIGN KEY (GebruikerId) REFERENCES Gebruiker(Id)
 );
 
+
 CREATE TABLE Les (
     Id INT PRIMARY KEY AUTO_INCREMENT,
     Naam VARCHAR(50) NOT NULL,
@@ -151,3 +152,5 @@ VALUES
   ('Nico', 'van', 'Brugen', 2, 'Beheerder', 1, SYSDATE(6), SYSDATE(6)),
   ('Denis', NULL, 'Law', 3, 'Beheerder', 1, SYSDATE(6), SYSDATE(6)),
   ('Robert', 'van', 'Hammer', 4, 'DiskMedewerker', 1, SYSDATE(6), SYSDATE(6));
+
+

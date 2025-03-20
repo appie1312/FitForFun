@@ -35,7 +35,7 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                 <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/navbar/logout.php">Loguit</a>
+                        <a class="nav-link" href="/navbar/logout.php">Log uit</a>
                     </li>
                 <?php else: ?>
                             <li><a class="dropdown-item" href="/login/login.php">Inloggen</a></li>
