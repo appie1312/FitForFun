@@ -100,21 +100,21 @@ VALUES
 
 
 
-CREATE TABLE MedewerkersOverzicht
+CREATE TABLE Medewerker
 (
     Id                  INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     VoorNaam            VARCHAR(50) DEFAULT NULL,
     Tussenvoegsel       VARCHAR(10) NULL,
     Achternaam          VARCHAR(50) NOT NULL,
-    Nummer              MEDIUMINT UNSIGNED NOT NULL,
-    Medewerkersoort     VARCHAR(20) NOT NULL, 
+    Nummer              MEDIUMINT UNSIGNED NOT NULL, 
+    Medewerkersoort     VARCHAR(20) NOT NULL, -- Manager, Beheerder en DiskMedewerker
     IsActief            BIT NOT NULL DEFAULT 1,
     Opmerking           VARCHAR(250) NULL,
     DatumAangemaakt     DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
     DatumGewijzigd      DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
 ) ENGINE=InnoDB;
 
-INSERT INTO MedewerkersOverzicht 
+INSERT INTO Medewerker
 (
     VoorNaam,
     Tussenvoegsel,
