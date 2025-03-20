@@ -25,7 +25,7 @@ try {
 }
 
 // SQL-query om gegevens op te halen
-$sql = "SELECT VoorNaam, Tussenvoegsel, Achternaam, Nummer, Medewerkersoort FROM MedewerkersOverzicht ORDER BY Nummer DESC";
+$sql = "SELECT VoorNaam, Tussenvoegsel, Achternaam, Nummer, Medewerkersoort FROM Medewerker ORDER BY Nummer DESC";
 
 try {
     $statement = $pdo->prepare($sql);
@@ -47,6 +47,7 @@ try {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
+ <div id="navbar"></div>
     <div class="container mt-3">  
         <div class="row">
             <div class="col-2"></div>
@@ -95,7 +96,10 @@ try {
             </div>
             <div class="col-2"></div>
         </div>
+        <div id="footer"></div>
     </div>
+    <script src="/footer/footer.js"></script>
+    <script src="/navbar/navbar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
