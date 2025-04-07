@@ -10,7 +10,7 @@ try {
     die("Databaseverbinding mislukt: " . $e->getMessage());
 }
 
-// Verwerk het formulier
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $VoorNaam = $_POST['VoorNaam'] ?? null;
     $Tussenvoegsel = $_POST['Tussenvoegsel'] ?? null;
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ':IsActief' => $IsActief
         ]);
 
-        // Redirect naar index.php na toevoegen
+        
         header("Location: medewerkers.php");
         exit;
     } else {
