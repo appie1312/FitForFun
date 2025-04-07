@@ -34,10 +34,7 @@
 
                     <label for="wachtwoord" class="form-label">Wachtwoord</label>
                     <input type="password" class="form-control" id="wachtwoord" name="wachtwoord" required>
-
-                    <label for="tweedewachtwoord" class="form-label">Herhaal wachtwoord</label>
-                    <input type="password" class="form-control" id="tweedewachtwoord" name="tweedewachtwoord" required>
-
+                    
                     <button class="btn knoppen w-30 my-3" type="submit">Registreren</button>
                 </form>
 

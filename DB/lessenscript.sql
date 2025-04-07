@@ -79,7 +79,7 @@ CREATE TABLE Rol (
     CONSTRAINT FK_Gebruiker FOREIGN KEY (GebruikerId) REFERENCES Gebruiker(Id)
 );
 
-CREATE TABLE MedewerkersOverzicht
+CREATE TABLE Medewerker
 (
     Id                  INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     VoorNaam            VARCHAR(50) DEFAULT NULL,
