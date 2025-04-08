@@ -19,7 +19,6 @@ try {
     die("Fout bij verbinden met database: " . $e->getMessage());
 }
 
-
 if (isset($_GET['delete_id'])) {
     $id = intval($_GET['delete_id']);
 
@@ -29,11 +28,15 @@ if (isset($_GET['delete_id'])) {
         $medewerker = $stmt->fetch(PDO::FETCH_OBJ);
 
         if ($medewerker) {
-            $delStmt = $pdo->prepare("DELETE FROM Medewerker WHERE Nummer = :id");
-            if ($delStmt->execute(['id' => $id])) {
-                $successMsg = "Medewerker succesvol verwijderd.";
+            if ($medewerker->Medewerkersoort === "Beheerder") {
+                $errorMsg = "Je kunt een beheerder niet verwijderen.";
             } else {
-                $errorMsg = "Fout bij verwijderen.";
+                $delStmt = $pdo->prepare("DELETE FROM Medewerker WHERE Nummer = :id");
+                if ($delStmt->execute(['id' => $id])) {
+                    $successMsg = "Medewerker succesvol verwijderd.";
+                } else {
+                    $errorMsg = "Fout bij verwijderen.";
+                }
             }
         } else {
             $errorMsg = "Medewerker bestaat niet.";
@@ -125,9 +128,17 @@ try {
                                 <td><?= htmlspecialchars($Medewerker->Nummer) ?></td>
                                 <td><?= htmlspecialchars($Medewerker->Medewerkersoort) ?></td>
                                 <td>
-                                    <a href="wijzig.php?id=<?= $Medewerker->Nummer ?>"onclick="return confirm('Weet je zeker dat je deze medewerker wilt wijzigen?')"><i class="bi bi-arrow-clockwise"></i></a> |
-                                    <a href="medewerkers.php?delete_id=<?= $Medewerker->Nummer ?>" onclick="return confirm('Weet je zeker dat je deze medewerker wilt verwijderen?')"> <i class="bi bi-trash-fill"></i></a>
-                                </td>
+    <a href="wijzig.php?id=<?= htmlspecialchars($Medewerker->Nummer) ?>" 
+       onclick="return confirm('Weet je zeker dat je deze medewerker wilt wijzigen?')">
+        <i class="bi bi-arrow-clockwise"></i>
+    </a>
+    |
+    <a href="medewerkers.php?delete_id=<?= htmlspecialchars($Medewerker->Nummer) ?>" 
+       onclick="return confirm('Weet je zeker dat je deze medewerker wilt verwijderen?')">
+        <i class="bi bi-trash-fill"></i>
+    </a>
+</td>
+
                             </tr> 
                         <?php endforeach; ?>
                     <?php else: ?>
@@ -143,6 +154,7 @@ try {
 
     <div id="footer"></div>
 </div>
+
 <script src="/footer/footer.js"></script>
 <script src="/navbar/navbar.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
