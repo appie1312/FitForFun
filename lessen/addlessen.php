@@ -9,7 +9,6 @@
    
 </head>
 <body>
-
 <div class="form-container">
     <h3 class="text-center mb-3">Les Toevoegen</h3>
     <form action="addlessen.php" method="POST">
@@ -64,7 +63,7 @@
         <button type="submit" class="btn btn-register">Les Toevoegen</button>
     </form>
 </div>
-
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

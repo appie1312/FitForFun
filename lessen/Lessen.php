@@ -72,6 +72,8 @@ $conn->close();
                                 <th>prijs</th>
                                 <th>datum</th>
                                 <th>tijdduur</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -82,6 +84,28 @@ $conn->close();
                                     <td><?= $les->prijs ?></td>
                                     <td><?= $les->datum ?></td>
                                     <td><?= $les->tijdduur ?></td>
+                                    <td>
+                                        <?php if($les->naam == 'Meditatie') : ?>
+                                            <button onclick="alert('Deze les kan niet meer aangepast worden.')" class="btn btn-warning btn-sm" >
+                                                <i class="bi bi-pencil-square"></i>
+                                            </button>
+                                        <?php else : ?>
+                                            <a href="editlessen.php?les_id=<?= $les->les_id ?>" class="btn btn-warning btn-sm">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <?php if($les->naam == 'Meditatie') : ?>
+                                            <button onclick="alert('Je kan deze les niet verwijderen. Deadline voor annuleren is verstreken.')" class="btn btn-danger btn-sm">
+                                                <i class="bi bi-trash-fill"></i>
+                                            </button>
+                                        <?php else : ?>
+                                            <a href="delete.php?les_id=<?= $les->les_id ?>" class="btn btn-danger btn-sm">
+                                                <i class="bi bi-trash-fill"></i>
+                                            </a>
+                                        <?php endif; ?>
+                                    </td>                                     
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
