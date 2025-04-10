@@ -7,17 +7,27 @@ $username = "root";
 $password = "";
 $dbname = "FitForFun";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Verbinding mislukt: " . $conn->connect_error);
+try {
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        throw new Exception("Verbinding mislukt: " . $conn->connect_error);
+    }
+} catch (Exception $e) {
+    die($e->getMessage());
 }
 
 
 if(isset($_GET['les_id'])) {
     $les_id = $_GET['les_id'];
-    $result = $conn->query("SELECT * FROM Lessen WHERE les_id = $les_id");
-    $les = $result->fetch_object();
+    try {
+        $result = $conn->query("SELECT * FROM Lessen WHERE les_id = $les_id");
+        if (!$result) {
+            throw new Exception("Fout bij ophalen van les: " . $conn->error);
+        }
+        $les = $result->fetch_object();
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
 }
 
 
@@ -29,15 +39,18 @@ if(isset($_POST['update'])) {
     $datum = $_POST['datum'];
     $tijdduur = $_POST['tijdduur'];
 
-    $sql = "UPDATE Lessen 
-            SET naam='$naam', tijd='$tijd', prijs='$prijs', datum='$datum', tijdduur='$tijdduur', DatumGewijzigd=NOW()
-            WHERE les_id='$les_id'";
+    try {
+        $sql = "UPDATE Lessen 
+                SET naam='$naam', tijd='$tijd', prijs='$prijs', datum='$datum', tijdduur='$tijdduur', DatumGewijzigd=NOW()
+                WHERE les_id='$les_id'";
 
-    if($conn->query($sql)) {
+        if (!$conn->query($sql)) {
+            throw new Exception("Fout bij updaten: " . $conn->error);
+        }
         header("Location: Lessen.php");
         exit;
-    } else {
-        echo "Fout bij updaten: " . $conn->error;
+    } catch (Exception $e) {
+        echo $e->getMessage();
     }
 }
 ?>
@@ -72,7 +85,7 @@ if(isset($_POST['update'])) {
     <input type="time" name="tijdduur" value="<?= $les->tijdduur ?>" class="form-control mb-2">
 
     <button type="submit" name="update" class="btn btn-success">Opslaan</button>
-    <a href="agenda.php" class="btn btn-secondary">Annuleren</a>
+    <a href="Lessen.php" class="btn btn-secondary">Annuleren</a>
 </form>
 
 </body>
